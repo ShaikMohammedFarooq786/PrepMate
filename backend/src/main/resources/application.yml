@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/prepmate?createDatabaseIfNotExist=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:prepmate}
+    password: ${DB_PASSWORD:prepmate}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+server:
+  port: 8080

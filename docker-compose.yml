@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: prepmate-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: prepmate
+      MYSQL_USER: prepmate
+      MYSQL_PASSWORD: prepmate
+      MYSQL_ROOT_PASSWORD: root
+    ports: ["3306:3306"]
+    volumes: ["prepmate_mysql:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "prepmate", "-pprepmate"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  prepmate_mysql:
